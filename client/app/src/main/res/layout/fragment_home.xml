@@ -136,12 +136,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="20dp"
             android:layout_marginTop="259dp"
             android:layout_marginBottom="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/line">
+            app:layout_constraintBottom_toTopOf="@+id/line"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,7 +150,8 @@
                 android:text="예산 대비 지출"
                 android:textColor="#000000"
                 android:textSize="16dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:paddingHorizontal="16dp"/>
 
             <TextView
                 android:id="@+id/date"
@@ -160,13 +161,15 @@
                 android:text="12.1~12.17"
                 android:textColor="#5B5B5B"
                 android:textSize="12dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="5dp"
+                android:paddingHorizontal="16dp"/>
 
             <com.github.mikephil.charting.charts.HorizontalBarChart
                 android:id="@+id/graph_stackedBar"
-                android:layout_width="match_parent"
+                android:layout_width="401dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"/>
+                android:paddingLeft="16dp"
+                />
 
             <!--category1-->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -174,8 +177,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingVertical="2dp">
+                android:paddingVertical="2dp"
+                android:paddingLeft="36dp"
+                android:paddingRight="20dp">
 
                 <ImageView
                     android:id="@+id/icon_category1"
@@ -246,8 +250,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingVertical="2dp">
+                android:paddingVertical="2dp"
+                android:paddingLeft="36dp"
+                android:paddingRight="20dp">
 
                 <ImageView
                     android:id="@+id/icon_category2"
@@ -318,8 +323,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingVertical="2dp">
+                android:paddingVertical="2dp"
+                android:paddingLeft="36dp"
+                android:paddingRight="20dp">
 
                 <ImageView
                     android:id="@+id/icon_category3"
@@ -421,7 +427,7 @@
                     android:id="@+id/graph_bar"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="30dp"
                     />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

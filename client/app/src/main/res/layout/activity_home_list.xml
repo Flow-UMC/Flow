@@ -94,9 +94,8 @@
 
             <android.widget.Button
                 android:id="@+id/btn_calendarPage"
-                android:layout_width="68dp"
+                android:layout_width="70dp"
                 android:layout_height="26dp"
-                android:layout_gravity="right"
                 android:background="@drawable/this_month_button"
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/spoqahansansneo_regular"
@@ -105,7 +104,8 @@
                 android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
