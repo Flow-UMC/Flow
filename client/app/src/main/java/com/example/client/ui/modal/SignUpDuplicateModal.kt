@@ -1,6 +1,7 @@
 package com.example.client.ui.modal
 
 import android.app.Dialog
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.client.databinding.ModalBoardDeleteBinding
 import com.example.client.databinding.ModalSignupDuplicateBinding
@@ -16,6 +17,7 @@ class SignUpDuplicateModal(private val context : AppCompatActivity) {
 
         dialog.setContentView(viewBinding.root) //다이얼로그에 사용할 xml 파일을 불러옴
         dialog.setCancelable(false) //다이얼로그의 바깥 화면을 눌렀을 때 다이얼로그가 닫히지 않도록 함
+        dialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT) //모달창 크기 지정
 
         //삭제 버튼 눌렀을 때
         viewBinding.modalDelete.setOnClickListener {

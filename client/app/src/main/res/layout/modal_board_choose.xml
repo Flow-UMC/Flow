@@ -50,9 +50,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/modal_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:maxWidth="150dp"/>
+        android:layout_height="160dp"
+        android:scrollbars="vertical" />
 
 
     <Button

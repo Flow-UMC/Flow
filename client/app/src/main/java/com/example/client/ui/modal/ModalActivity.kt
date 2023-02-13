@@ -6,7 +6,9 @@ import com.example.client.R
 import com.example.client.data.Detail
 import com.example.client.databinding.ActivityAddCategoryBinding
 import com.example.client.databinding.ActivityModalBinding
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class ModalActivity : AppCompatActivity() {
     private lateinit var viewBinding:ActivityModalBinding
 
@@ -28,13 +30,12 @@ class ModalActivity : AppCompatActivity() {
         val detailId=list.map { it.detailId }
 
 
-        //val dialog = BoardChooseModal(this,1, list)
+        val dialog = BoardChooseModal(this,1, list)
+        //val dialog = BoardDeleteModal(this,1,detailId)
+        //val dialog = SignUpDuplicateModal(this)
 
-        //dialog.show()
 
-        val dialog = BoardDeleteModal(this,1,detailId)
         dialog.show()
-
 
 
     }

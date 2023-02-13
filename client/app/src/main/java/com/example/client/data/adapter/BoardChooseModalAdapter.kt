@@ -1,18 +1,22 @@
 package com.example.client.data.adapter
 
-import android.graphics.Color
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.client.R
+import com.example.client.data.AppDatabase
 import com.example.client.data.Detail
 import com.example.client.databinding.ItemRecordBinding
+import kotlinx.coroutines.InternalCoroutinesApi
 
-
-class BoardChooseModalAdapter(private val recordList:List<Detail>): RecyclerView.Adapter<BoardChooseModalAdapter.ItemViewHolder>() {
+@InternalCoroutinesApi
+class BoardChooseModalAdapter(private val context: Context, private val recordList:List<Detail>): RecyclerView.Adapter<BoardChooseModalAdapter.ItemViewHolder>() {
     private var selectedItemPosition = 0
-    private var selectedLayout: View? = null
+    private var selectedItem: View? = null
+
+    val roomDb = AppDatabase.getInstance(context)
 
     private lateinit var mListener: OnItemClickListener
 
@@ -24,12 +28,26 @@ class BoardChooseModalAdapter(private val recordList:List<Detail>): RecyclerView
         this.mListener=listener
     }
 
-    class ItemViewHolder(private val binding: ItemRecordBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ItemViewHolder(private val binding: ItemRecordBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(data: Detail){
             binding.tvTime.text=data.time
             binding.tvMoney.text=data.price.toString()
             binding.tvMemo.text=data.memo
             binding.tvName.text=data.shop
+
+            /*
+            if (roomDb != null) {
+                binding.icon.setImageResource(roomDb.CategoryDao().selectById(data.categoryId).image)
+            } else{
+                when(data.typeId){
+                    1 -> binding.icon.setImageResource(R.drawable.ic_category_user)
+                    else -> binding.icon.setImageResource(R.drawable.ic_category_income_user)
+                }
+            }
+
+             */
+
+            binding.highlight.visibility=View.GONE
         }
     }
 
@@ -46,25 +64,21 @@ class BoardChooseModalAdapter(private val recordList:List<Detail>): RecyclerView
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(recordList[position])
 
-        // Item Initialize
         holder.itemView.isSelected = position == selectedItemPosition
+        if(position==0){selectedItem=holder.itemView} //창이 처음 켜지면 첫번째 아이템이 클릭되도록 설정
 
-        //창이 처음 켜지면 첫번째 아이템이 클릭되도록 설정
-        if(position==0){selectedLayout=holder.itemView}
-
+        // 대표 내역 선택
         holder.itemView.setOnClickListener{
-            //클릭한 아이템 다른 클래스로 넘겨주기
-            mListener.onItemClick(it,position)
+            mListener.onItemClick(it,position) //클릭한 아이템 다른 클래스로 넘겨주기
 
-            //
             val currentPosition = holder.adapterPosition
 
             //선택되었던 아이템 클릭 해제
-            selectedLayout?.isSelected=false
+            selectedItem?.isSelected=false
             selectedItemPosition = currentPosition
             //클릭한 아이템 클릭 설정
-            selectedLayout = holder.itemView
-            selectedLayout?.isSelected=true
+            selectedItem = holder.itemView
+            selectedItem?.isSelected=true
 
         }
 
